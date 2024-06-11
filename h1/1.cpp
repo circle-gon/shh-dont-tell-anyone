@@ -7,6 +7,16 @@ int main() {
     ifstream input;
     ofstream output;
     input.open("input.txt");
+
+    if (errno != 0) {
+        if (errno == ENOENT) {
+            cout << "input.txt doesn't exist.\n";
+        } else {
+            cout << "Something went wrong... (" << errno << ")\n";
+        }
+        return 1;
+    }
+
     output.open("output.txt");
 
     string a = "";
