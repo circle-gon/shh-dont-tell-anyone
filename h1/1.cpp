@@ -4,6 +4,10 @@
 using namespace std;
 
 int main() {
+    // I think freopen was the intended method,
+    // but that makes cout unusable when using it
+    // on output.txt
+    
     ifstream input;
     ofstream output;
     input.open("input.txt");
