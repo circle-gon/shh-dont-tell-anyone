@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <iostream>
-#include <sstream>
 
 using namespace std;
 
@@ -18,23 +17,14 @@ void printout(int arr[], int size) {
 }
 
 int main() {
-    string in;
-    // Don't use << because it skips the \n
-    // This makes getline think that it's the input
-    getline(cin, in);
-
-    int size = stoi(in);
-
-    string n;
-    getline(cin, n);
+    int size;
+    cin >> size;
     
     int* nums = new int[size];
 
-    istringstream iss (n);
-    string num;
     int count = 0;
-    while (getline(iss, num, ' ') && count < size) {
-        nums[count++] = stoi(num);
+    while (count < size) {
+        cin >> nums[count++];
     }
 
     printout(nums, size);
