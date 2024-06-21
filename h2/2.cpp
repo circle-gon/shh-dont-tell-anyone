@@ -3,12 +3,6 @@
 
 using namespace std;
 
-void printarr(int arr[], int n) {
-    cout << "array: ";
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
-    cout << "\n";
-}
-
 // algorithm:
 // use aux space u = min(s, n - s) to do partial join of both sorted arrays
 // then push the remaning parts of of the first sorted to tbe second sorted
