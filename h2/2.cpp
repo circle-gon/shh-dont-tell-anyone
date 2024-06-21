@@ -19,9 +19,9 @@ void printarr(int arr[], int n) {
 // 2n because each number must be pushed to the aux, then pushed back to the original array
 // s*ceil(n/u) because at most the first s numbers must be pushed forward each time
 // (not sure how to improve time bound, maybe n-s instead of n but it might be possible for the
-// time bound to be higher)
+// time bound to be more accurate)
 
-void mergesort(int arr[], int s, int n) {
+void mergesortcore(int arr[], int s, int n) {
     int size = min(s, n - s);
     int* aux = new int[size];
 
@@ -61,10 +61,36 @@ void mergesort(int arr[], int s, int n) {
     }
 }
 
-int main() {
-    int arr[] = {2, 5, 10, 13, -1, 5, 7, 9};
+// Reverses a section of an array in place
+// O(n) time and O(1) space
+void reversearr(int arr[], int start, int end) {
+    while (start < end) {
+        int tmp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = tmp;
+        start++;
+        end--;
+    }
+}
 
-    mergesort(arr, 4, 8);
+void mergesort(int arr[], int s, int n) {
+    if (s > n / 2) {
+        // Swap the two sorted areas so that the smaller one is first
+        // This gives us O(n) time always
+        int t = n - s;
+        reversearr(arr, 0, n - 1);
+        reversearr(arr, 0, t - 1);
+        reversearr(arr, t, n - 1);
+        mergesortcore(arr, t, n);
+    } else {
+        mergesortcore(arr, s, n);
+    }
+}
+
+int main() {
+    int arr[] = {2, 5, 10, 13, 15, -1, 5, 7, 9};
+
+    mergesort(arr, 5, 9);
 
     for (auto i: arr) {
         cout << i << " ";
