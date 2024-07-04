@@ -94,4 +94,5 @@ int main() {
     }
 
     cout << profits;
+    return 0;
 }

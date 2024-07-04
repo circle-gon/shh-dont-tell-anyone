@@ -35,4 +35,5 @@ int main() {
     }
 
     cout << small;
+    return 0;
 }
