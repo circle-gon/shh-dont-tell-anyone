@@ -3,6 +3,9 @@
         "iosfwd": "cpp",
         "iostream": "cpp",
         "array": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "algorithm": "cpp"
     }
 }
